@@ -6,6 +6,22 @@
 */
 (function(global, $) {
 
-  
+  var Hellow = function(firstName, lastName, language) {
+    return new Hellow.init(firstName, lastName, language);
+  }
+
+  Hellow.prototype = {};
+
+  Hellow.init = function(firstName, lastName, language) {
+    var self = this;
+    self.firstName = firstName || '';
+    self.lastName = lastName || '';
+    self.language = language || 'en';
+
+  }
+
+  Hellow.init.prototype = Hellow.prototype;
+
+  global.Hellow = global.H$ = Hellow;
 
 }(window, jQuery));

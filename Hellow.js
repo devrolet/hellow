@@ -6,33 +6,40 @@
 */
 (function(global, $) {
   
+  // 'new' an object
   var Hellow = function(firstName, lastName, language) {
     return new Hellow.init(firstName, lastName, language);
   }
-
+  
+  // hidden within the scope of the IIFE and never directly accessible
   var supportedLangs = ['en', 'es'];
 
+  // informal greetings
   var greetings = {
     en: 'Hello',
     es: 'Hola'
   };
 
+  // formal greetings
   var formalGreetings = {
     en: 'Greetings',
     es: 'Saludos'
   };
 
+  // logger messages
   var logMessages = {
     en: 'Logged in',
     es: 'Inicio sesion'
   }
 
+  // Create a prototype for the library
   Hellow.prototype = {
     fullName: function() {
       return `${this.firstName} ${this.lastName}`;
     },
 
     validate: function() {
+      // check if language is valid - references supported langs
       if (supportedLangs.indexOf(this.language) === -1) {
         throw 'Invalid language'
       }
@@ -72,6 +79,7 @@
       return this;
     },
 
+    // sets the language and validates it
     setLang: function(lang) {
       this.language = lang;
 
@@ -110,10 +118,13 @@
     self.lastName = lastName || '';
     self.language = language || 'en';
 
+    self.validate();
   }
 
+  // so we dont have to use the 'new' keyword
   Hellow.init.prototype = Hellow.prototype;
 
+  // attach Hellow to the global object and set '$H' shorthand
   global.Hellow = global.H$ = Hellow;
 
 }(window, jQuery));

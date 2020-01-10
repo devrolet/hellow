@@ -4,7 +4,7 @@
 *  Includes jQuery
 *  Copyright 2020 Chet Hill.
 */
-(function(global, $) {
+;(function(global, $) {
   
   // 'new' an object
   var Hellow = function(firstName, lastName, language) {
@@ -124,7 +124,7 @@
   // so we dont have to use the 'new' keyword
   Hellow.init.prototype = Hellow.prototype;
 
-  // attach Hellow to the global object and set '$H' shorthand
+  // attach Hellow to the global object and set 'H$' shorthand
   global.Hellow = global.H$ = Hellow;
 
 }(window, jQuery));
